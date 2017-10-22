@@ -6,5 +6,5 @@ package com.example.android.resto.Enums;
 
 public enum CardType {
 
-    CITY_CARD
+    CITY_CARD, RESTO_CARD
 }

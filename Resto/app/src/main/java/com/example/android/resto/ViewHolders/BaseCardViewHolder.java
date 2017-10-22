@@ -34,6 +34,12 @@ public class BaseCardViewHolder extends RecyclerView.ViewHolder {
 
                 return new CityCardViewHolder(itemView);
 
+            case RESTO_CARD:
+
+                itemView = inflater.inflate(R.layout.view_restaurant_layout, null);
+
+                return new RestoCardViewHolder(itemView);
+
         }
 
         return null;

@@ -5,9 +5,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.resto.App;
+import com.example.android.resto.FragArgs;
+import com.example.android.resto.Fragments.RestaurantListFragment;
+import com.example.android.resto.Managers.FragmentManager;
 import com.example.android.resto.Models.City;
 import com.example.android.resto.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by android on 10/15/2017.
@@ -22,7 +28,7 @@ public class CityCardViewHolder extends BaseCardViewHolder {
     @Override
     public void init(Object value) {
 
-        City city = (City) value;
+        final City city = (City) value;
 
         ImageView cityImage = itemView.findViewById(R.id.city_image);
 
@@ -37,6 +43,19 @@ public class CityCardViewHolder extends BaseCardViewHolder {
         String imageUrl = city.getImage();
 
         Picasso.with(App.getContext()).load(imageUrl).into(cityImage);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Map<String, Object> args = new HashMap<>();
+
+                args.put(FragArgs.CITY, city);
+
+                FragmentManager.showFragment(RestaurantListFragment.class, args);
+
+            }
+        });
 
     }
 }
