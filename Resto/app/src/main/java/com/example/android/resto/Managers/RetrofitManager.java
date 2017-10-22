@@ -4,6 +4,7 @@ import com.example.android.resto.Constants;
 import com.example.android.resto.Interfaces.Request;
 import com.example.android.resto.Interfaces.RetroCallback;
 import com.example.android.resto.Models.PopularCitiesResponse;
+import com.example.android.resto.Models.RestaurantsResponse;
 import com.example.android.resto.Utilities.UIUtil;
 
 import okhttp3.OkHttpClient;
@@ -48,6 +49,13 @@ public class RetrofitManager {
         }
 
         return instance;
+    }
+
+    public void getRestaurantList(RetroCallback<RestaurantsResponse> callback) {
+
+        Call<RestaurantsResponse> call = request.getRestaurantList();
+
+        call.enqueue(callback);
     }
 
     public void getPopularCities(RetroCallback<PopularCitiesResponse> callback) {

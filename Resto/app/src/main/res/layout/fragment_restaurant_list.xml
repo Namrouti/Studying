@@ -12,22 +12,24 @@
         >
 
         <TextView
+            android:id="@+id/city_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="@dimen/normal_margin"
             android:textColor="@color/BLACK"
             android:textSize="@dimen/large_text_size"
-            android:text="@string/app_name"
             />
 
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:layout_below="@+id/action_bar"
-        android:id="@+id/popular"
+        android:id="@+id/resto_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         />
 
 </RelativeLayout>

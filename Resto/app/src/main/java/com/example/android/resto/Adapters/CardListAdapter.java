@@ -13,35 +13,37 @@ import java.util.List;
  * Created by android on 10/15/2017.
  */
 
-public class PopularCitiesAdapter extends RecyclerView.Adapter<BaseCardViewHolder> {
+public class CardListAdapter extends RecyclerView.Adapter<BaseCardViewHolder> {
 
-    List<City> popular;
+    List<?> list;
 
-    public PopularCitiesAdapter(List<City> cities) {
+    CardType cardType;
 
-        popular = cities;
+    public CardListAdapter(List<?> list, CardType type) {
+
+        this.list = list;
+
+        cardType = type;
     }
 
     @Override
     public BaseCardViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        CardType type = CardType.CITY_CARD;
-
-        return BaseCardViewHolder.createViewHolder(type);
+        return BaseCardViewHolder.createViewHolder(cardType);
 
     }
 
     @Override
     public void onBindViewHolder(BaseCardViewHolder holder, int position) {
 
-        holder.init(popular.get(position));
+        holder.init(list.get(position));
 
     }
 
     @Override
     public int getItemCount() {
 
-        return popular == null ? 0 : popular.size();
+        return list == null ? 0 : list.size();
 
     }
 }
