@@ -6,6 +6,7 @@ import com.example.android.resto.App;
 
 /**
  * Created by android on 10/3/2017.
+ * 
  */
 
 public class BaseActivity extends AppCompatActivity {
