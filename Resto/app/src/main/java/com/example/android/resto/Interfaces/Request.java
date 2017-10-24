@@ -1,6 +1,7 @@
 package com.example.android.resto.Interfaces;
 
 import com.example.android.resto.Models.PopularCitiesResponse;
+import com.example.android.resto.Models.Restaurant;
 import com.example.android.resto.Models.RestaurantsResponse;
 
 import retrofit2.Call;
@@ -16,4 +17,7 @@ public interface Request {
     Call<PopularCitiesResponse> getPopularCities();
     @GET("getRestaurantList")
     Call<RestaurantsResponse> getRestaurantList();
+
+    @GET("getRestaurantDetails")
+    Call<Restaurant> getRestaurantDetails();
 }

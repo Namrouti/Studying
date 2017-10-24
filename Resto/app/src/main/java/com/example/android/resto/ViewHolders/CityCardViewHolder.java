@@ -52,7 +52,7 @@ public class CityCardViewHolder extends BaseCardViewHolder {
 
                 args.put(FragArgs.CITY, city);
 
-                FragmentManager.showFragment(RestaurantListFragment.class, args);
+                FragmentManager.showFragment(RestaurantListFragment.class, args, null);
 
             }
         });

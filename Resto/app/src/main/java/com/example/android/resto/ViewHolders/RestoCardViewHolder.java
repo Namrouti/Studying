@@ -1,5 +1,6 @@
 package com.example.android.resto.ViewHolders;
 
+import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -7,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.android.resto.App;
 import com.example.android.resto.FragArgs;
+import com.example.android.resto.Fragments.RestaurantDetailsFragment;
 import com.example.android.resto.Fragments.RestaurantListFragment;
 import com.example.android.resto.Managers.FragmentManager;
 import com.example.android.resto.Models.City;
@@ -30,7 +32,7 @@ public class RestoCardViewHolder extends BaseCardViewHolder {
     @Override
     public void init(Object value) {
 
-        Restaurant restaurant = (Restaurant) value;
+        final Restaurant restaurant = (Restaurant) value;
 
         ImageView restoImage = itemView.findViewById(R.id.restaurant_image);
 
@@ -51,6 +53,19 @@ public class RestoCardViewHolder extends BaseCardViewHolder {
         ratingBar.setRating(restaurant.getRating());
 
         Picasso.with(App.getContext()).load(restaurant.getImage()).into(restoImage);
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Bundle args = new Bundle();
+
+                args.putSerializable(FragArgs.RESTAURANT, restaurant);
+
+                FragmentManager.showFragment(RestaurantDetailsFragment.class, null, args);
+
+            }
+        });
 
     }
 }
