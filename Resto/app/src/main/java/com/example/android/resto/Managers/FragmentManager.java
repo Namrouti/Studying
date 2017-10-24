@@ -1,5 +1,6 @@
 package com.example.android.resto.Managers;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
@@ -27,7 +28,7 @@ public class FragmentManager {
         Log.d("status", "added");
     }
 
-    public static <T extends BaseFragment> void showFragment(Class<T> clazz, Map<String, Object> args) {
+    public static <T extends BaseFragment> void showFragment(Class<T> clazz, Map<String, Object> args, Bundle bundle) {
 
         if(args == null) {
 
@@ -38,6 +39,8 @@ public class FragmentManager {
         try {
 
             BaseFragment fragment = clazz.newInstance();
+
+            fragment.setArguments(bundle);
 
             fragment.setArgs(args);
 
@@ -52,7 +55,7 @@ public class FragmentManager {
 
     public static <T extends BaseFragment> void showFragment(Class<T> clazz) {
 
-        showFragment(clazz, null);
+        showFragment(clazz, null, null);
 
     }
 }

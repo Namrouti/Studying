@@ -7,4 +7,5 @@ package com.example.android.resto;
 public class FragArgs {
 
     public static final String CITY = "CITY";
+    public static final String RESTAURANT = "RESTAURANT";
 }

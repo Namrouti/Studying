@@ -1,6 +1,8 @@
 package com.example.android.resto.Utilities;
 
 import android.app.Dialog;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +40,15 @@ public class UIUtil {
 
             ((ViewGroup)rootView).removeView(loadingView);
         }
+    }
+
+    public static int dpToPx(int dp) {
+
+        Resources r = App.getContext().getResources();
+
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
+
+        return (int) px;
     }
 
 }

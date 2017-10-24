@@ -6,5 +6,9 @@ package com.example.android.resto.Enums;
 
 public enum CardType {
 
-    CITY_CARD, RESTO_CARD
+    CITY_CARD, RESTO_CARD, IMAGE_CARD,
+    NAME_CARD,
+    MEALS_CARD,
+    DESCRIPTION_CARD,
+    SEPARATOR
 }

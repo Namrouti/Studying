@@ -40,6 +40,35 @@ public class BaseCardViewHolder extends RecyclerView.ViewHolder {
 
                 return new RestoCardViewHolder(itemView);
 
+            case SEPARATOR:
+
+                itemView = inflater.inflate(R.layout.view_separator, null);
+
+                return new SeparatorViewHolder(itemView);
+
+            case IMAGE_CARD:
+
+                itemView = inflater.inflate(R.layout.view_image_card, null);
+
+                return new ImageCardViewHolder(itemView);
+
+            case NAME_CARD:
+
+                itemView = inflater.inflate(R.layout.view_name_card, null);
+
+                return new NameCardViewHolder(itemView);
+
+            case MEALS_CARD:
+
+                itemView = inflater.inflate(R.layout.view_meals_card, null);
+
+                return new MealsListViewHolder(itemView);
+
+            case DESCRIPTION_CARD:
+
+                itemView = inflater.inflate(R.layout.view_name_card, null);
+
+                return new DescriptionViewHolder(itemView);
         }
 
         return null;

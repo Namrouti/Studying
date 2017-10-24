@@ -4,6 +4,7 @@ import com.example.android.resto.Constants;
 import com.example.android.resto.Interfaces.Request;
 import com.example.android.resto.Interfaces.RetroCallback;
 import com.example.android.resto.Models.PopularCitiesResponse;
+import com.example.android.resto.Models.Restaurant;
 import com.example.android.resto.Models.RestaurantsResponse;
 import com.example.android.resto.Utilities.UIUtil;
 
@@ -63,6 +64,13 @@ public class RetrofitManager {
         Call<PopularCitiesResponse> call = request.getPopularCities();
 
         call.enqueue(callback);
+    }
+
+    public void getRestaurantDetails(RetroCallback<Restaurant> callback) {
+
+        Call<Restaurant> getRestaurantDetails = request.getRestaurantDetails();
+
+        getRestaurantDetails.enqueue(callback);
     }
 
 }
