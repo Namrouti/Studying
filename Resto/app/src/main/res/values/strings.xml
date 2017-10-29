@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">Resto</string>
     <string name="BOOK">Book</string>
+    <string name="ABOUT">About</string>
+    <string name="EXIT">Exit</string>
+    <string name="ABOUT_TEXT">Whether you’re building your own website or are just browsing for information on a business, organization, or individual, the ‘About Us’ page is a vital part of every website and blog. Why? Because it’s usually one of the first destinations visitors will click when arriving to a site.
+
+If they aren’t impressed, you can expect them to leave without reading your awesome content, signing up for your newsletter or making a purchase on your e-commerce site.</string>
 </resources>

@@ -8,14 +8,22 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.example.android.resto.App;
+import com.example.android.resto.Enums.EventType;
+import com.example.android.resto.Fragments.AboutUsFragment;
 import com.example.android.resto.Fragments.HomeFragment;
 import com.example.android.resto.Managers.FragmentManager;
+import com.example.android.resto.Models.ObservableModel;
 import com.example.android.resto.R;
+import com.example.android.resto.Utilities.EventObservable;
 
-public class MainActivity extends BaseActivity {
+import java.util.Observable;
+import java.util.Observer;
+
+public class MainActivity extends BaseActivity implements Observer{
 
     private DrawerLayout mDrawer;
     private NavigationView nvView;
@@ -33,6 +41,8 @@ public class MainActivity extends BaseActivity {
         setupDrawerContent(nvView);
 
         FragmentManager.showFragment(HomeFragment.class);
+
+        EventObservable.withType(EventType.MENU_OPEN).addObserver(this);
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
@@ -47,28 +57,25 @@ public class MainActivity extends BaseActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
-        Class fragmentClass = HomeFragment.class;
+
+        Class fragmentClass = AboutUsFragment.class;
+
         switch(menuItem.getItemId()) {
-            case R.id.home_fragment:
-                fragmentClass = HomeFragment.class;
+
+            case R.id.about:
+
+                FragmentManager.showFragment(fragmentClass);
+
                 break;
-            case R.id.nav_second_fragment:
-                //fragmentClass = SecondFragment.class;
+
+            case R.id.exit:
+
+                finish();
+
                 break;
-            case R.id.nav_third_fragment:
-                //fragmentClass = ThirdFragment.class;
-                break;
-            default:
-                fragmentClass = HomeFragment.class;
+
         }
 
-        FragmentManager.showFragment(fragmentClass);
-
-        // Insert the fragment by replacing any existing fragment
-
-        // Close the navigation drawer
         mDrawer.closeDrawers();
     }
 
@@ -77,5 +84,29 @@ public class MainActivity extends BaseActivity {
         super.onDestroy();
 
         App.setCurrentActivity(null);
+
+        EventObservable.withType(EventType.MENU_OPEN).deleteObserver(this);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+
+        if(arg == null || !(arg instanceof ObservableModel)) {
+
+            return;
+
+        }
+
+        ObservableModel model = (ObservableModel) arg;
+
+        switch (model.getType()) {
+
+            case MENU_OPEN:
+
+                mDrawer.openDrawer(Gravity.START);
+
+                break;
+        }
+
     }
 }
